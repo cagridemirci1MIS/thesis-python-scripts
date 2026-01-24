@@ -70,18 +70,7 @@ Researchers may reproduce the full dataset by re-running the provided scripts wi
 ---
 
 ## Repository Structure
-thesis-python-scripts/
-│
-├─ config/          # Selection criteria and thresholds
-├─ data/
-│   └─ sample/      # Anonymized sample dataset
-├─ scripts/         # Data collection and preprocessing pipeline
-├─ src/             # Core feature extraction and modeling modules
-├─ notebooks/       # Exploratory analysis and modeling notebooks
-├─ requirements.txt
-├─ .env.example
-├─ CITATION.cff
-└─ README.md
+
 
 
 ---

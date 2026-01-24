@@ -2,7 +2,7 @@
 
 ## Project Overview
 
-This repository contains the data collection, preprocessing, and analytical pipeline developed as part of a Master’s thesis in the field of **Management Information Systems**. The study focuses on the **use of English-origin words and code-mixing (Turkish–English)** in Turkish social media texts and examines this phenomenon from a **socio-technical systems perspective**.
+This repository contains the data collection, preprocessing, and analytical pipeline developed as part of the Master’s thesis "Data-Driven Analysis of the Use of English in Turkish Social Media Texts by Cagri Demirci" in the field of **Management Information Systems**. The study focuses on the **use of English-origin words and code-mixing (Turkish–English)** in Turkish social media texts and examines this phenomenon from a **socio-technical systems perspective**.
 
 Using YouTube gaming content produced by Turkish creators, the project applies **Natural Language Processing (NLP)**, **machine learning**, and **BERT-based deep learning models** to analyze multilingual user-generated data and to evaluate how code-mixing relates to **digital engagement indicators** and **model performance**.
 

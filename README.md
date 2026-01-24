@@ -88,21 +88,35 @@ thesis-python-scripts/
 ---
 
 ## How to Run
+1. **Install dependencies**
+```bash
+pip install -r requirements.txt
+
+---
+
 Set up API credentials
 Create a .env file based on .env.example and add your YouTube Data API key:
 
 YOUTUBE_API_KEY=your_api_key_here
 
+---
+
 Run the selection and preprocessing pipeline
 
 python scripts/select_top50.py
 
+---
 
 Proceed with feature extraction and modeling
 Use the scripts in scripts/ or the notebooks in notebooks/ to reproduce the analyses.
+
+---
+
 Ethical Considerations
 
 This study adheres to ethical research principles concerning digital trace data and user-generated content. No personally identifiable information is disclosed. Data sharing is limited to derived and anonymized samples, and all data collection complies with YouTube’s terms of service.
+
+---
 
 Citation
 
@@ -110,6 +124,11 @@ If you use this repository or build upon this work, please cite:
 
 Demirci, C. (2026). Data-Driven Analysis of the Use of English in Turkish Social Media Texts.
 MSc Thesis, Erciyes University.
+
+
+
+---
+
 
 Türkçe Açıklama
 Proje Özeti

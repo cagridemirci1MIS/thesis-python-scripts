@@ -12,9 +12,9 @@ Using YouTube gaming content produced by Turkish creators, the project applies *
 
 The empirical analyses conducted in this repository address the following research questions:
 
-- **AR1:** Is there a statistically significant relationship between the level of code-mixing in Turkish social media content and digital engagement indicators (e.g., views, likes, comments)?
-- **AR2:** Does the degree of code-mixing affect the performance of machine learning and BERT-based deep learning models in classification and prediction tasks?
-- **AR3:** Can linguistic features related to code-mixing be used as meaningful input variables for predicting engagement levels?
+- **RQ1:** Is there a statistically significant relationship between the level of code-mixing in Turkish social media content and digital engagement indicators (e.g., views, likes, comments)?
+- **RQ2:** Does the degree of code-mixing affect the performance of machine learning and BERT-based deep learning models in classification and prediction tasks?
+- **RQ3:** Can linguistic features related to code-mixing be used as meaningful input variables for predicting engagement levels?
 
 ---
 
@@ -70,6 +70,18 @@ Researchers may reproduce the full dataset by re-running the provided scripts wi
 ---
 
 ## Repository Structure
+thesis-python-scripts/
+│
+├─ config/ # Selection criteria and thresholds
+├─ data/
+│ └─ sample/ # Anonymized sample dataset
+├─ scripts/ # Data collection and preprocessing pipeline
+├─ src/ # Core feature extraction and modeling modules
+├─ notebooks/ # Exploratory analysis and modeling notebooks
+├─ requirements.txt
+├─ .env.example
+├─ CITATION.cff
+└─ README.md
 
 ---
 

@@ -70,7 +70,6 @@ Researchers may reproduce the full dataset by re-running the provided scripts wi
 ---
 
 ## Repository Structure
-
 ```
 thesis-python-scripts/
 │
@@ -85,7 +84,6 @@ thesis-python-scripts/
 ├─ CITATION.cff
 └─ README.md
 ```
-
 
 ---
 

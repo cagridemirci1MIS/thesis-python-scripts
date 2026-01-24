@@ -1,145 +1,246 @@
-Thesis Python Scripts – Cagri Demirci (2025)
+# Code-Mixing Analysis in Turkish Social Media Content
 
-This repository contains Python scripts developed for the MSc Thesis project by Cagri Demirci, focusing on code-mixing analysis, language interaction, and digital communication analytics.
-Each file represents an independent analytical module that can be executed individually or imported as part of a larger research workflow.
+## Project Overview
 
-📘 Project Overview
+This repository contains the data collection, preprocessing, and analytical pipeline developed as part of a Master’s thesis in the field of **Management Information Systems**. The study focuses on the **use of English-origin words and code-mixing (Turkish–English)** in Turkish social media texts and examines this phenomenon from a **socio-technical systems perspective**.
 
-These scripts were created to support linguistic and computational research on English lexical borrowings in Turkish social media texts.
-The analyses cover code-mixing ratios, English root extraction, engagement metrics, machine learning performance, and visual insights from exploratory data analysis.
+Using YouTube gaming content produced by Turkish creators, the project applies **Natural Language Processing (NLP)**, **machine learning**, and **BERT-based deep learning models** to analyze multilingual user-generated data and to evaluate how code-mixing relates to **digital engagement indicators** and **model performance**.
 
-📂 File Descriptions
-🔤 Linguistic Analysis
+---
 
-code_mixing_ratio.py
+## Research Questions
 
-Calculates the Code-Mixing Ratio (CMR) by identifying English tokens within multilingual text data.
+The empirical analyses conducted in this repository address the following research questions:
 
-Detects English-origin words in mixed-language texts.
+- **AR1:** Is there a statistically significant relationship between the level of code-mixing in Turkish social media content and digital engagement indicators (e.g., views, likes, comments)?
+- **AR2:** Does the degree of code-mixing affect the performance of machine learning and BERT-based deep learning models in classification and prediction tasks?
+- **AR3:** Can linguistic features related to code-mixing be used as meaningful input variables for predicting engagement levels?
 
-Returns a numeric ratio (English words / total words).
+---
 
-Works with text strings or pandas Series.
+## Data Collection and Selection Criteria
 
-english_root_extraction.py
+The data collection process follows a multi-stage pipeline implemented in Python:
 
-Extracts English roots from Turkish-English hybrid words (e.g., like'lamak, save'ledim).
+### Video and Channel Selection
+- Platform: YouTube  
+- Region: Turkey (`TR`)  
+- Language context: Turkish  
+- Content domain: Gaming-related videos  
+- Sources:
+  - Predefined Turkish gaming content creators
+  - Keyword-based YouTube search queries
 
-Includes regex-based substring detection and optional NLTK stemming.
+### Filtering and Selection
+- Inclusion based on gaming-related keywords in video titles and descriptions
+- Exclusion of non-relevant content (e.g., news, politics, children’s content)
+- Long-form video duration constraints
+- Deduplication based on video identifiers
+- Ranking and selection of videos using engagement-based criteria and channel-level limits
 
-Returns token lists and frequency counts.
+### Transcript Retrieval
+- Video transcripts were retrieved via the YouTube Data API.
+- API credentials are not included in the repository and must be provided by the user.
 
-english_wordcloud.py
+### Feature Construction
+- Detection of English-origin lexical items in Turkish transcripts
+- Computation of code-mixing indicators and frequency-based features
 
-Generates visual word clouds of English tokens extracted from code-mixed datasets.
+All selection thresholds, keyword lists, and constraints are explicitly defined in the codebase to ensure transparency and reproducibility.
 
-Provides frequency-weighted visualization to highlight dominant English borrowings.
+---
 
-Supports customization of color palettes, shapes, and stopwords.
+## Data Availability
 
-📊 Data Analysis and Visualization
+Due to platform terms of service and ethical considerations related to user-generated content, **raw YouTube transcripts and full datasets are not publicly shared**.
 
-exploratory_data_analysis.py
+To support transparency and reproducibility, this repository provides:
+- All scripts used for data collection, filtering, and preprocessing,
+- A derived and anonymized **sample dataset** (`data/sample/sample_codemixing_dataset.xlsx`),
+- All feature extraction and modeling code used in the analyses.
 
-Performs initial EDA (Exploratory Data Analysis) on text datasets (CSV/JSON).
+The shared sample dataset includes the following variables:
+- `Video_ID`: anonymized video identifier  
+- `Transkript`: processed transcript text  
+- `english_detect`: detected English-origin lexical items  
+- `english_counts`: frequency of detected English-origin items  
 
-Provides descriptive statistics, token distributions, and visualization options.
+Researchers may reproduce the full dataset by re-running the provided scripts with their own API credentials, subject to YouTube’s terms of service.
 
-Generates exportable summary tables.
+---
 
-final_eda_visualisation.py
+## Repository Structure
 
-Produces detailed EDA visualizations including frequency plots and token heatmaps.
-
-Used to complement exploratory_data_analysis.py outputs for presentation-ready visuals.
-
-merge_codemix_data.py
-
-Merges multilingual datasets for cross-platform or multi-source analysis.
-
-Handles deduplication, normalization, and consistent text encoding.
-
-pipeline_diagram.py
-
-Visualizes the full data processing and modeling pipeline.
-
-Generates flowcharts showing interactions between linguistic and ML modules.
-
-🤖 Machine Learning and Performance Analysis
-
-machine_learning_performance.py
-
-Evaluates model performance metrics (accuracy, precision, recall, F1-score).
-
-Supports multiple models for comparative benchmarking.
-
-Outputs structured reports and plots.
-
-Model_Performance_Bulgular.py
-
-Summarizes empirical findings from model performance experiments.
-
-Provides tabular and visual interpretations of classification outcomes.
-
-Intended for inclusion in thesis result sections.
-
-YouTube_CodeMix_Model_Performance.py
-
-Integrates YouTube data (e.g., comments, titles) into code-mixing performance evaluation.
-
-Assesses how English code-mixing influences engagement and model accuracy.
-
-🎥 Social Media Engagement
-
-youtube_engagement_rate.py
-
-Calculates engagement rate from YouTube video metadata:
-Engagement Rate = ((Likes + Comments) / Views) * 100
-
-Vectorized for DataFrame-level computation.
-
-Handles missing or zero-view cases safely.
-
-⚙️ How to Run
-
-Clone the repository and navigate into the folder:
-
-git clone https://github.com/yourusername/thesis_python_scripts.git
-cd thesis_python_scripts
+thesis-python-scripts/
+│
+├─ config/ # Selection criteria and thresholds
+├─ data/
+│ └─ sample/ # Anonymized sample dataset
+├─ scripts/ # Data collection and preprocessing pipeline
+├─ src/ # Core feature extraction and modeling modules
+├─ notebooks/ # Exploratory analysis and modeling notebooks
+├─ requirements.txt
+├─ .env.example
+├─ CITATION.cff
+└─ README.md
 
 
-Run scripts individually:
+---
 
-python code_mixing_ratio.py
-python english_root_extraction.py
-python youtube_engagement_rate.py
-python machine_learning_performance.py
+## How to Run
+Set up API credentials
+Create a .env file based on .env.example and add your YouTube Data API key:
 
+YOUTUBE_API_KEY=your_api_key_here
 
-Or import modules directly into a Jupyter Notebook or Python environment.
+Run the selection and preprocessing pipeline
 
-🔐 API Keys
-
-All sensitive credentials are removed.
-If an API call is needed, replace:
-
-API_KEY = "YOUR_API_KEY"
+python scripts/select_top50.py
 
 
-with your valid key.
+Proceed with feature extraction and modeling
+Use the scripts in scripts/ or the notebooks in notebooks/ to reproduce the analyses.
+Ethical Considerations
 
-🧠 Citation
+This study adheres to ethical research principles concerning digital trace data and user-generated content. No personally identifiable information is disclosed. Data sharing is limited to derived and anonymized samples, and all data collection complies with YouTube’s terms of service.
 
-Demirci, C. (2025). Code-Mixing in Digital Communication: Data-Driven Analysis of the Use of English in Turkish Social Media Texts.
+Citation
+
+If you use this repository or build upon this work, please cite:
+
+Demirci, C. (2026). Data-Driven Analysis of the Use of English in Turkish Social Media Texts.
 MSc Thesis, Erciyes University.
 
-📄 License
+Türkçe Açıklama
+Proje Özeti
 
-These scripts are provided for academic and research purposes under an open educational license.
-Reuse or adaptation is permitted with proper attribution to the author.
+Bu depo, Yönetim Bilişim Sistemleri alanında hazırlanmış bir yüksek lisans tezi kapsamında geliştirilen veri toplama, ön işleme ve analiz süreçlerini içermektedir. Çalışma, Türkçe sosyal medya metinlerinde İngilizce kökenli sözcüklerin kullanımı ve kod karışımı (Türkçe–İngilizce) olgusunu sosyo-teknik sistemler perspektifi çerçevesinde incelemektedir.
 
-Author: Cagri Demirci
-Year: 2025
-Email: cagridemirci1@gmail.com
+YouTube platformunda Türk içerik üreticileri tarafından üretilen oyun videoları temel alınarak; Doğal Dil İşleme (NLP), makine öğrenimi ve BERT tabanlı derin öğrenme modelleri kullanılmış, kod karışımının dijital etkileşim göstergeleri ve model performansı ile ilişkisi analiz edilmiştir.
 
-Location: Kayseri, Türkiye
+Araştırma Soruları
+
+Bu depoda gerçekleştirilen ampirik analizler aşağıdaki araştırma sorularını ele almaktadır:
+
+AR1: Türkçe sosyal medya içeriklerinde kod karışımı düzeyi ile dijital etkileşim göstergeleri (izlenme, beğeni, yorum sayısı vb.) arasında anlamlı bir ilişki var mıdır?
+
+AR2: Kod karışımı düzeyi, makine öğrenimi ve BERT tabanlı derin öğrenme modellerinin sınıflandırma ve tahmin performansını etkilemekte midir?
+
+AR3: Kod karışımına ilişkin dilsel özellikler, etkileşim düzeylerinin tahmininde anlamlı girdi değişkenleri olarak kullanılabilir mi?
+
+Veri Toplama ve Seçim Kriterleri
+
+Veri toplama süreci Python ile geliştirilen çok aşamalı bir iş akışına dayanmaktadır:
+
+Video ve Kanal Seçimi
+
+Platform: YouTube
+
+Bölge: Türkiye (TR)
+
+Dil bağlamı: Türkçe
+
+İçerik alanı: Oyun içerikleri
+
+Kaynaklar:
+
+Önceden belirlenmiş Türk oyun içerik üreticileri
+
+Anahtar kelime tabanlı YouTube aramaları
+
+Filtreleme ve Seçim
+
+Video başlığı ve açıklamasında oyunla ilişkili anahtar kelimelerin bulunması
+
+Haber, politika, çocuk içeriği gibi alakasız içeriklerin hariç tutulması
+
+Uzun format video süre kısıtları
+
+Video kimliği üzerinden tekilleştirme
+
+Etkileşim temelli sıralama ve kanal bazlı üst sınırlar
+
+Transkript Toplama
+
+Video transkriptleri YouTube Data API aracılığıyla elde edilmiştir.
+
+API anahtarları depoda yer almamakta, kullanıcı tarafından sağlanmaktadır.
+
+Özellik Türetme
+
+Türkçe metinlerde İngilizce kökenli sözcüklerin tespiti
+
+Kod karışımı göstergeleri ve frekans tabanlı metriklerin hesaplanması
+
+Tüm eşikler, anahtar kelime listeleri ve kısıtlar, şeffaflık ve tekrar üretilebilirlik amacıyla kod tabanında açıkça tanımlanmıştır.
+
+Veri Erişilebilirliği
+
+Platform kullanım koşulları ve kullanıcı tarafından üretilmiş içeriklere ilişkin etik gerekçeler nedeniyle ham YouTube transkriptleri ve tam veri seti paylaşılmamaktadır.
+
+Şeffaflık ve tekrar üretilebilirliği desteklemek amacıyla bu depo:
+
+Veri toplama, filtreleme ve ön işleme için kullanılan tüm betikleri,
+
+Türetilmiş ve anonimleştirilmiş bir örnek veri setini (data/sample/sample_codemixing_dataset.xlsx),
+
+Analizlerde kullanılan tüm özellik çıkarımı ve modelleme kodlarını içermektedir.
+
+Paylaşılan örnek veri setinde yer alan değişkenler:
+
+Video_ID: anonimleştirilmiş video kimliği
+
+Transkript: işlenmiş transkript metni
+
+english_detect: tespit edilen İngilizce kökenli sözcükler
+
+english_counts: tespit edilen İngilizce kökenli sözcüklerin frekansı
+
+Araştırmacılar, kendi API anahtarlarını kullanarak ilgili betikleri yeniden çalıştırmak suretiyle veri setini yeniden üretebilirler.
+
+Depo Yapısı
+thesis-python-scripts/
+│
+├─ config/          # Seçim kriterleri ve eşikler
+├─ data/
+│   └─ sample/      # Anonimleştirilmiş örnek veri seti
+├─ scripts/         # Veri toplama ve ön işleme adımları
+├─ src/             # Özellik çıkarımı ve modelleme modülleri
+├─ notebooks/       # Keşifsel analiz ve modelleme defterleri
+├─ requirements.txt
+├─ .env.example
+├─ CITATION.cff
+└─ README.md
+
+Çalıştırma Adımları
+
+Bağımlılıkların kurulması
+
+pip install -r requirements.txt
+
+
+API anahtarının ayarlanması
+.env.example dosyasına göre bir .env dosyası oluşturun ve YouTube Data API anahtarınızı ekleyin:
+
+YOUTUBE_API_KEY=your_api_key_here
+
+
+Seçim ve ön işleme sürecinin çalıştırılması
+
+python scripts/select_top50.py
+
+
+Özellik çıkarımı ve modelleme
+scripts/ klasöründeki betikler veya notebooks/ klasöründeki defterler kullanılarak analizler tekrarlanabilir.
+
+Etik Hususlar
+
+Bu çalışma, dijital iz verilerinin kullanımına ilişkin etik araştırma ilkelerine uygun olarak yürütülmüştür. Kişisel olarak tanımlanabilir herhangi bir bilgi paylaşılmamaktadır. Veri paylaşımı yalnızca türetilmiş ve anonimleştirilmiş örnekler ile sınırlıdır ve tüm veri toplama süreçleri YouTube’un kullanım koşullarıyla uyumludur.
+
+Atıf
+
+Bu depoyu kullanan veya bu çalışmadan yararlanan araştırmacıların aşağıdaki kaynağa atıf vermesi rica olunur:
+
+Demirci, C. (2026). Türkçe Sosyal Medya Metinlerinde İngilizce Kökenli Kelime
+Kullanımının Veri Odaklı Analizi.
+Yüksek Lisans Tezi, Erciyes Üniversitesi.
